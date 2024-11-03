@@ -26,8 +26,8 @@ This Python program simulates rolling dice and calculates the probability distri
    - the first prompt will be to enter the number of sides of the dice (n)
      - press enter after entering the number
    - the second prompt will be to enter the number of dice (m)
-    - press enter after entering the number
+     - press enter after entering the number
    - the third prompt will be to enter the number of rolls (k)
-    - press enter after entering the number
+     - press enter after entering the number
 3. **Run the tests**:
    - run python -m pytest tests.py to run the tests

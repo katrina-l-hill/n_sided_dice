@@ -1,6 +1,5 @@
 import pytest
 from app import roll_dice, roll_dice_multiple_times, probability_distribution
-from collections import defaultdict
 
 # Normal Test Cases
 def test_roll_dice_standard():
