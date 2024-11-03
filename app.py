@@ -1,4 +1,3 @@
-
 import random
 from collections import defaultdict
 
@@ -25,30 +24,34 @@ def roll_dice_multiple_times(m, n, k):
 
 # Task 3: Calculating Probability Distribution
 def probability_distribution(m, n):
-    probabilities = defaultdict(float)
-    for roll in range(m, m * n + 1):
-        probabilities[roll] = 0
+    if m == 0:
+        return {}
     
+    if m <= 0 or n <= 0:
+        raise ValueError("Both m and n must be positive integers.")
+    
+    probabilities = defaultdict(float)
+        
     if m == 1:
         for i in range(1, n + 1):
             probabilities[i] = 1 / n
         return probabilities
     
+    sub_probs = probability_distribution(m - 1, n)
+
     for i in range(1, n + 1):
-        sub_probs = probability_distribution(m - 1, n)
-        for sum, prob in sub_probs.items():
-            probabilities[sum + i] += prob / n
+        for sum_val, prob in sub_probs.items():
+            probabilities[sum_val + i] += prob / n
 
     return probabilities
 
 # Task 4: User Interface
 def main():
-    # Get user input for N, M, and K
+
     n = int(input("Enter the number of sides on the dice (N): "))
     m = int(input("Enter the number of dice (M): "))
     k = int(input("Enter the number of rolls (K): "))
 
-    # Calculate the probability distribution
     probabilities = probability_distribution(m, n)
 
     # Display the results
@@ -56,6 +59,5 @@ def main():
     for sum_value in sorted(probabilities.keys()):
         print(f"Sum: {sum_value}, Probability: {probabilities[sum_value]:.4f}")
 
-# Run the main function
 if __name__ == "__main__":
     main()
